@@ -1,4 +1,4 @@
-# AI-Powered Financial Trade Reconciliation Agent
+# Financial Trade Reconciliation Agent
 
 A next-generation financial operations agent that combines deterministic logic with Large Language Models (LLMs) to automate the reconciliation of trade records between internal booking systems and external brokers/custodians.
 
@@ -25,6 +25,20 @@ Traditional systems rely on brittle, static rules that fail when formats change 
 
 ---
 
+## ⚡ System Architecture
+
+The system follows a strict ETL and decision-making pipeline:
+
+1.  **Ingest:** Analyst uploads `internal.csv` and `broker.csv` via Streamlit.
+2.  **Parse:** Backend normalizes data (TradeID, Symbol, Side, Qty, Price, Timestamp).
+3.  **Deterministic Match:** Rules engine runs exact matches and tolerance checks.
+4.  **Fuzzy Match (AI):** Unmatched records undergo vector embedding; the LLM provides a contextual evaluation.
+5.  **Hybrid Scoring:** A weighted score determines if the trade is Auto-Matched, Needs Review, or Unmatched.
+6.  **Review:** Analyst accepts or rejects matches in the UI.
+7.  **Learn:** Decisions are persisted to retrain the model.
+
+---
+
 ## 🛠 Tech Stack
 
 ### Core Application
@@ -45,14 +59,3 @@ Traditional systems rely on brittle, static rules that fail when formats change 
 
 ---
 
-## ⚡ Workflow Architecture
-
-The system follows a strict ETL and decision-making pipeline:
-
-1.  **Ingest:** Analyst uploads `internal.csv` and `broker.csv` via Streamlit.
-2.  **Parse:** Backend normalizes data (TradeID, Symbol, Side, Qty, Price, Timestamp).
-3.  **Deterministic Match:** Rules engine runs exact matches and tolerance checks.
-4.  **Fuzzy Match (AI):** Unmatched records undergo vector embedding; the LLM provides a contextual evaluation.
-5.  **Hybrid Scoring:** A weighted score determines if the trade is Auto-Matched, Needs Review, or Unmatched.
-6.  **Review:** Analyst accepts or rejects matches in the UI.
-7.  **Learn:** Decisions are persisted to retrain the model.
