@@ -42,20 +42,20 @@ The system follows a strict ETL and decision-making pipeline:
 ## 🛠 Tech Stack
 
 ### Core Application
-* **Frontend:** Streamlit (Deployed on Streamlit Cloud)
+* **Frontend:** Streamlit 
 * **Backend:** Python (Flask)
-* **Data Processing:** Pandas, SQLite (Dev), Postgres (Prod)
+* **Data Processing:** Pandas, SQLite
 
 ### AI & Reasoning
 * **Inference & Embeddings:** TogetherAI
 * **Synthetic Data & Training:** Oumi
-* **Logic:** Hybrid Scoring ($FinalScore = w_1 \cdot RuleScore + w_2 \cdot LLMScore$)
+* **Logic:** Hybrid Scoring 
 
 ### Infrastructure & DevOps
 * **Orchestration:** Kestra
 * **Containerization:** Docker
 * **CI/CD:** GitHub Actions
-* **Developer Tools:** Cline (CLI Scaffolding), CodeRabbit (PR Reviews)
+* **Developer Tools:** Cline CLI, CodeRabbit
 
 ---
 
