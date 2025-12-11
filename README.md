@@ -25,17 +25,6 @@ Traditional systems rely on brittle, static rules that fail when formats change 
 
 ---
 
-## 🆚 Problem vs. Solution
-
-| Current Industry Standard | Our AI Agent Solution |
-| :--- | :--- |
-| **Brittle Mappings:** Breaks when broker formats change. | **LLM Parsing:** Adapts to schema changes and symbol aliases intelligently. |
-| **Manual Exception Handling:** Analysts manually check every non-exact match. | **AI-Augmented Review:** LLM explains *why* a match likely occurred, reducing review time. |
-| **Static Rules:** No improvement over time. | **Active Learning:** System gets smarter with every analyst approval/rejection. |
-| **Fragmented Tools:** Disparate scripts and Excel sheets. | **Unified Orchestration:** Kestra manages the entire lifecycle in one view. |
-
----
-
 ## 🛠 Tech Stack
 
 ### Core Application
