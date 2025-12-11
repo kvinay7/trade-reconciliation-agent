@@ -56,6 +56,7 @@ The system follows a strict ETL and decision-making pipeline:
 * **Containerization:** Docker
 * **CI/CD:** GitHub Actions
 * **Developer Tools:** Cline CLI, CodeRabbit
+* **Deployment:** Vercel
 
 ---
 
