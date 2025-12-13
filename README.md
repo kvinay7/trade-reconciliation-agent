@@ -17,11 +17,10 @@ Traditional systems rely on brittle, static rules that fail when formats change 
 
 ## 🚀 Key Features
 
-* **Hybrid Matching Logic:** Combines traditional Pandas-based rules with TogetherAI embeddings for a robust matching score.
-* **Human-in-the-Loop:** A Streamlit dashboard allows analysts to review low-confidence matches with LLM-generated explanations.
-* **Automated Orchestration:** Kestra pipelines handle the end-to-end flow: Ingest → Parse → Match → Report.
-* **Continuous Learning:** Analyst decisions are fed back into the system (via Oumi) to synthesize edge cases and improve future model performance.
-* **Modern Dev Stack:** Built with speed in mind using Cline for scaffolding and CodeRabbit for automated PR reviews.
+* **Hybrid Matching Logic:** Combines traditional rules with embeddings for a robust matching score.
+* **Human-in-the-Loop:** Dashboard allows analysts to review low-confidence matches with LLM-generated explanations.
+* **Automated Orchestration:** Pipelines handle the end-to-end flow: Ingest → Parse → Match → Report.
+* **Continuous Learning:** Analyst decisions are fed back into the system to synthesize edge cases and improve future model performance.
 
 ---
 
@@ -29,7 +28,7 @@ Traditional systems rely on brittle, static rules that fail when formats change 
 
 The system follows a strict ETL and decision-making pipeline:
 
-1.  **Ingest:** Analyst uploads `internal.csv` and `broker.csv` via Streamlit.
+1.  **Ingest:** Analyst uploads `internal.csv` and `broker.csv` via UI.
 2.  **Parse:** Backend normalizes data (TradeID, Symbol, Side, Qty, Price, Timestamp).
 3.  **Deterministic Match:** Rules engine runs exact matches and tolerance checks.
 4.  **Fuzzy Match (AI):** Unmatched records undergo vector embedding; the LLM provides a contextual evaluation.
@@ -39,21 +38,19 @@ The system follows a strict ETL and decision-making pipeline:
 
 ---
 
-## 🛠 [Tech Stack](https://chatgpt.com/s/t_693ab9dd869c81919948a323ceb3793b)
+## 🛠 Tech Stack
 
 ### Core Application
-* **Frontend:** Streamlit 
-* **Backend:** Python (Flask)
-* **Data Processing:** Pandas, SQLite
+* **Frontend:** Next.js
+* **Backend:** Python, Node.js
+* **Data Processing:** Pandas
 
 ### AI & Reasoning
 * **Inference & Embeddings:** TogetherAI
 * **Synthetic Data & Training:** Oumi
-* **Logic:** Hybrid Scoring 
 
 ### Infrastructure & DevOps
 * **Orchestration:** Kestra
-* **Containerization:** Docker
 * **CI/CD:** GitHub Actions
 * **Developer Tools:** Cline CLI, CodeRabbit
 * **Deployment:** Vercel
