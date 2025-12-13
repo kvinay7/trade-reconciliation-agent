@@ -46,7 +46,7 @@ The system follows a strict ETL and decision-making pipeline:
 * **Data Processing:** Pandas
 
 ### AI & Reasoning
-* **Orchestration:** LangChain
+* **LLM Orchestration:** LangChain
 * **Inference & Embeddings:** TogetherAI
 * **Synthetic Data & Training:** Oumi
 
@@ -58,9 +58,8 @@ The system follows a strict ETL and decision-making pipeline:
 
 ---
 
-## 🧑‍💻 Development
+## 🧑‍💻 Development Setup
 
-### Setup
 * Create GitHub Repository and Codespace
 
 * Verify Environment:
