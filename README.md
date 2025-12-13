@@ -46,6 +46,7 @@ The system follows a strict ETL and decision-making pipeline:
 * **Data Processing:** Pandas
 
 ### AI & Reasoning
+* **Orchestration:** LangChain
 * **Inference & Embeddings:** TogetherAI
 * **Synthetic Data & Training:** Oumi
 
@@ -60,7 +61,7 @@ The system follows a strict ETL and decision-making pipeline:
 ## 🧑‍💻 Development
 
 ### Setup
-* Create GitHub Repository and codespace
+* Create GitHub Repository and Codespace
 
 * Verify Environment:
     ```bash
@@ -91,4 +92,143 @@ The system follows a strict ETL and decision-making pipeline:
     * Enable auto PR reviews
     * Add `.github/coderabbit.yml`
 
-* Add Cline CLI
+* Add Cline CLI:
+    ```bash
+        npm install -g cline
+        cline version
+        cline auth
+    ```
+
+---
+
+# Implementation
+
+## Schema Discovery & Canonical Normalization (LLM-Driven)
+
+### 🎯 Objective
+
+Enable the system to **accept any CSV file without predefined schemas**, automatically infer a **canonical schema using an LLM**, normalize all other files against it, and prepare data for matching.
+
+This removes brittle assumptions and mirrors **real-world financial data onboarding**.
+
+---
+
+### ✅ Key Design Principles
+
+* ❌ No hardcoded column mappings
+* ✅ Any CSV format supported
+* ✅ User selects a **central (reference) file**
+* ✅ LLM infers **semantic meanings** of columns
+* ✅ Canonical schema becomes the system’s contract
+* ✅ All other files are normalized via LLM reasoning
+
+---
+
+### 🧩 Step-by-Step Implementation
+
+---
+
+### **1. Accept Any CSV (Schema-Agnostic Ingestion)**
+
+The system ingests CSV files **without assuming column names or formats**.
+
+**Implementation**
+
+* Read raw CSV into a Pandas DataFrame
+* Preserve original headers
+* Perform only minimal cleaning (trim spaces)
+
+**Result**
+
+* Any broker, custodian, or internal format is accepted
+
+---
+
+### **2. Extract Schema Metadata from Central File**
+
+Once the user selects a **central file**, the system extracts metadata for LLM reasoning:
+
+* Column names
+* Inferred data types
+* Sample rows
+
+This metadata becomes the **input context** for schema inference.
+
+**Why**
+LLMs reason better with **structure + examples**, not just headers.
+
+---
+
+### **3. Generate Canonical Schema using LLM (LangChain + Pydantic)**
+
+Using **LangChain**, the extracted schema is sent to the LLM to:
+
+* Infer semantic meaning of each column
+* Propose canonical field names
+* Generate human-readable descriptions
+
+**Output is strictly validated using Pydantic (`BaseModel`)** to avoid hallucinated formats.
+
+**Canonical Schema Output Includes**
+
+* `canonical_fields`
+* `column_mapping` (source → canonical)
+* `descriptions`
+
+This schema becomes the **single source of truth** for the rest of the pipeline.
+
+---
+
+### **4. Normalize All Other Files to Canonical Schema**
+
+For each non-central file:
+
+1. Extract its schema metadata
+2. Send both:
+
+   * Canonical schema
+   * Source file schema
+     to the LLM
+3. LLM returns a **column mapping**
+4. Apply mapping to produce a **normalized DataFrame**
+
+Unmapped or irrelevant columns are ignored.
+
+**Result**
+All datasets now share a **common semantic structure**, regardless of original format.
+
+---
+
+### **5. Provider-Agnostic LLM Architecture**
+
+To support multiple LLM providers:
+
+* **API keys** are stored only in `.env`
+* **Provider & model config** lives in a separate config file
+* LangChain abstracts provider differences
+* Switching providers requires **no code changes**
+
+Supported providers:
+
+* Together AI (default)
+* OpenAI (optional)
+
+---
+
+### **6. Configuration & Security Separation**
+
+| Concern           | Location             |
+| ----------------- | -------------------- |
+| API Keys          | `.env`               |
+| Model / Provider  | `config/llm.py`      |
+| LLM Logic         | `lib/llm/`           |
+| Output Validation | Pydantic `BaseModel` |
+
+This ensures:
+
+* Secure secret handling
+* Clean CI/CD
+* Vercel compatibility
+
+---
+
