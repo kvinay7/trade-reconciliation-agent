@@ -52,9 +52,43 @@ The system follows a strict ETL and decision-making pipeline:
 ### Infrastructure & DevOps
 * **Orchestration:** Kestra
 * **CI/CD:** GitHub Actions
-* **Developer Tools:** Cline CLI, CodeRabbit
+* **DevTools:** Cline, CodeRabbit
 * **Deployment:** Vercel
 
 ---
 
 ## 🧑‍💻 Development
+
+### Setup
+* Create GitHub Repository and codespace
+
+* Verify Environment:
+    ```bash
+        node -v
+        npm -v
+        python3 --version
+        git --version
+    ```
+
+* Scaffold Next.js App (Vercel-Compatible):
+    ```bash
+        npx create-next-app@latest .
+        npm run dev
+    ```
+
+* Git Commit:
+    ```bash
+        git status
+        git add .
+        git commit -m "init: Next.js app scaffold (Vercel-ready)"
+        git push origin main
+    ```
+
+* Enable CodeRabbit:
+    * Go to GitHub Marketplace
+    * Search CodeRabbit
+    * Install → Select only this repository
+    * Enable auto PR reviews
+    * Add `.github/coderabbit.yml`
+
+* Add Cline CLI
