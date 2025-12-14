@@ -1,0 +1,18 @@
+# Core data processing
+pandas>=2.1.0
+numpy>=1.26.0
+
+# LLM framework
+langchain>=0.2.0
+langchain-community>=0.2.0
+langchain-openai>=0.1.0
+
+# LLM providers
+together>=0.2.7
+openai>=1.30.0
+
+# Validation & typing
+pydantic>=2.6.0
+
+# Environment variables
+python-dotenv>=1.0.1
