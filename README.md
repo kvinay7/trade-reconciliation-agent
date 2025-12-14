@@ -1,4 +1,4 @@
-# Financial Trade Reconciliation Agent
+# Financial Trade Reconciliation Agent (POC)
 
 A next-generation financial operations agent that combines deterministic logic with Large Language Models (LLMs) to automate the reconciliation of trade records between internal booking systems and external brokers/custodians.
 
