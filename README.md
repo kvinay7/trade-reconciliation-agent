@@ -31,16 +31,16 @@ The system follows a staged ingestion and decision-making pipeline:
 
 ## 🛠 Tech Stack
 
-#### Core Application
+### Core Application
 * **Frontend:** Next.js
 * **Backend:** Python, Node.js
 * **Data Processing:** Pandas
 
-#### AI & Reasoning
+### AI & Reasoning
 * **LLM Orchestration:** LangChain
 * **Inference & Embeddings:** TogetherAI
 
-#### Infrastructure & DevOps
+### Infrastructure & DevOps
 * **DevTools:** CodeRabbit
 * **CI/CD:** GitHub Actions
 * **Deployment:** Vercel
@@ -79,6 +79,7 @@ The system follows a staged ingestion and decision-making pipeline:
     * Install → Select only this repository
     * Enable auto PR reviews
     * Add `.github/coderabbit.yml`
+
     ```bash
         git checkout -b feat/coderabbit
         git add .
@@ -102,9 +103,7 @@ All production changes are merged via Pull Requests with automated CodeRabbit re
 
 ### 🎯 Objective
 
-Enable the platform to ingest **any CSV file** (from brokers, custodians, or internal systems) **without predefined schemas, column mappings, or assumptions**.
-
-This module establishes the ingestion foundation for downstream normalization, matching, and reconciliation.
+Enable the platform to ingest **any CSV file** (from brokers, custodians, or internal systems) **without predefined schemas, column mappings, or assumptions**. This module establishes the ingestion foundation for downstream normalization, matching, and reconciliation.
 
 ### 🧠 Design Principles
 
