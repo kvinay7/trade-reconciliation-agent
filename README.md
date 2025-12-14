@@ -31,16 +31,16 @@ The system follows a staged ingestion and decision-making pipeline:
 
 ## 🛠 Tech Stack
 
-### Core Application
+#### Core Application
 * **Frontend:** Next.js
 * **Backend:** Python, Node.js
 * **Data Processing:** Pandas
 
-### AI & Reasoning
+#### AI & Reasoning
 * **LLM Orchestration:** LangChain
 * **Inference & Embeddings:** TogetherAI
 
-### Infrastructure & DevOps
+#### Infrastructure & DevOps
 * **DevTools:** CodeRabbit
 * **CI/CD:** GitHub Actions
 * **Deployment:** Vercel
@@ -79,21 +79,24 @@ The system follows a staged ingestion and decision-making pipeline:
     * Install → Select only this repository
     * Enable auto PR reviews
     * Add `.github/coderabbit.yml`
-    * ```bash
-            git checkout -b feat/coderabbit
-            git add .
-            git commit -m "feat: CodeRabbit on PR"
-            git push -u origin feat/coderabbit
-      ```
+    ```bash
+        git checkout -b feat/coderabbit
+        git add .
+        git commit -m "feat: CodeRabbit on PR"
+        git push -u origin feat/coderabbit
+    ```
 
 ---
 
 ## 🚀 Release Workflow and Setup
 
 All production changes are merged via Pull Requests with automated CodeRabbit review and Vercel preview deployments.
+
 ---
 
 # Implementation
+
+---
 
 ## Module 1: Schema-Agnostic CSV Ingestion
 
@@ -200,7 +203,7 @@ npm run dev
 
 ---
 
-## ✅ Result
+### ✅ Result
 
 * Heterogeneous CSV ingestion without schema lock-in
 * Clear separation between ingestion and downstream logic
