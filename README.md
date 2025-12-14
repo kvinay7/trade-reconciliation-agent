@@ -11,30 +11,21 @@ A next-generation financial operations agent that combines deterministic logic w
 Traditional systems rely on brittle, static rules that fail when formats change or fuzzy edge cases (partial fills, symbol aliases) occur. This agent solves that by implementing a **Hybrid Matching Engine**:
 
 * **Deterministic Rules:** For high-speed, high-confidence exact matches.
-* **LLM Fuzzy Reasoning:** For complex exceptions, utilizing embeddings and contextual logic to resolve mismatches like a human analyst would.
-
----
-
-## 🚀 Key Features
-
-* **Hybrid Matching Logic:** Combines traditional rules with embeddings for a robust matching score.
-* **Human-in-the-Loop:** Dashboard allows analysts to review low-confidence matches with LLM-generated explanations.
-* **Automated Orchestration:** Pipelines handle the end-to-end flow: Ingest → Parse → Match → Report.
-* **Continuous Learning:** Analyst decisions are fed back into the system to synthesize edge cases and improve future model performance.
+* **LLM Fuzzy Reasoning:** For complex exceptions, utilizing embeddings and contextual logic to resolve mismatches using contextual similarity comparable to analyst workflows.
 
 ---
 
 ## ⚡ System Architecture
 
-The system follows a strict ETL and decision-making pipeline:
+The system follows a staged ingestion and decision-making pipeline:
 
 1.  **Ingest:** Analyst uploads `internal.csv` and `broker.csv` via UI.
-2.  **Parse:** Backend normalizes data (TradeID, Symbol, Side, Qty, Price, Timestamp).
+2.  **Parse:** Backend extracts records and prepares them for downstream normalization.
 3.  **Deterministic Match:** Rules engine runs exact matches and tolerance checks.
 4.  **Fuzzy Match (AI):** Unmatched records undergo vector embedding; the LLM provides a contextual evaluation.
 5.  **Hybrid Scoring:** A weighted score determines if the trade is Auto-Matched, Needs Review, or Unmatched.
 6.  **Review:** Analyst accepts or rejects matches in the UI.
-7.  **Learn:** Decisions are persisted to retrain the model.
+7.  **Report:** Reconciliation results are exported as Excel reports.
 
 ---
 
@@ -99,6 +90,7 @@ The system follows a strict ETL and decision-making pipeline:
 
 ## 🚀 Release Workflow and Setup
 
+All production changes are merged via Pull Requests with automated CodeRabbit review and Vercel preview deployments.
 ---
 
 # Implementation
