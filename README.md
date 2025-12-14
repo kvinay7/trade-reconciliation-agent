@@ -119,6 +119,8 @@ This module establishes the ingestion foundation for downstream normalization, m
 * Minimal preprocessing
 * Deterministic, testable behavior
 
+---
+
 ### 🛠 Implementation Overview
 
 #### 1️⃣ Backend Ingestion
